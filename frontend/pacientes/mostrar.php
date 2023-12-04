@@ -1,256 +1,209 @@
 <?php
-    ob_start();
-     session_start();
-    
-    if(!isset($_SESSION['rol']) || $_SESSION['rol'] != 1){
+ob_start();
+session_start();
+
+if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
     header('location: ../login.php');
 
-    $id=$_SESSION['id'];
-  }
+    $id = $_SESSION['id'];
+}
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../../backend/css/admin.css">
-    <link rel="icon" type="image/png" sizes="96x96" href="../../backend/img/ico.svg">
-
-    <!-- Data Tables -->
-    <link rel="stylesheet" type="text/css" href="../../backend/css/datatable.css">
-    <link rel="stylesheet" type="text/css" href="../../backend/css/buttonsdataTables.css">
-    <link rel="stylesheet" type="text/css" href="../../backend/css/font.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<?php include_once("../includes/head.php") ?>
 
 
 
 
-    <title>Clínica Salud | Listado de pacientes</title>
-</head>
 <body>
-    
+
     <!-- SIDEBAR -->
-    <section id="sidebar">
-        <a href="../admin/escritorio.php" class="brand"><i class='bx bxs-heart icon'></i> Clínica Salud</a>
-        <ul class="side-menu">
-            <li><a href="../admin/escritorio.php" ><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
-            <li class="divider" data-text="main">Main</li>
-            <li>
-                <a href="#"><i class='bx bxs-book-alt icon' ></i> Citas <i class='bx bx-chevron-right icon-right' ></i></a>
-                <ul class="side-dropdown">
-                    <li><a href="../citas/mostrar.php">Todas las citas</a></li>
-                    <li><a href="../citas/nuevo.php">Nueva</a></li>
-                    <li><a href="../citas/calendario.php">Calendario</a></li>
-                   
-                </ul>
-            </li>
-
-            <li>
-                <a href="#" class="active"><i class='bx bxs-user icon' ></i> Pacientes <i class='bx bx-chevron-right icon-right' ></i></a>
-                <ul class="side-dropdown">
-                    <li><a href="../pacientes/mostrar.php" >Lista de pacientes</a></li>
-                    <li><a href="../pacientes/pagos.php">Pagos</a></li>
-                    <li><a href="../pacientes/historial.php">Historial de los pacientes</a></li>
-                    <li><a href="../pacientes/documentos.php">Documentos</a></li>
-                   
-                </ul>
-            </li>
-
-            <li>
-                <a href="#"><i class='bx bxs-briefcase icon' ></i> Médicos <i class='bx bx-chevron-right icon-right' ></i></a>
-                <ul class="side-dropdown">
-                    <li><a href="../medicos/mostrar.php">Lista de médicos</a></li>
-                    <li><a href="../medicos/historial.php">Historial de los médicos</a></li>
-                   
-                </ul>
-            </li>
-
-
-           
-
-            <li>
-                <a href="#"><i class='bx bxs-user-pin icon' ></i> Recursos humanos<i class='bx bx-chevron-right icon-right' ></i></a>
-                <ul class="side-dropdown">
-                    <li><a href="../recursos/enfermera.php">Enfermera</a></li>
-                    <li><a href="../recursos/laboratiorios.php">Laboratorios</a></li>
-                   
-                </ul>
-            </li>
-
-            <li>
-                <a href="#"><i class='bx bxs-diamond icon' ></i> Actividades financieras<i class='bx bx-chevron-right icon-right' ></i></a>
-                <ul class="side-dropdown">
-                    <li><a href="../actividades/mostrar.php">Pagos</a></li>
-                    <li><a href="../actividades/nuevo.php">Nuevo pago</a></li>
-                   
-                </ul>
-            </li>
-
-            <li>
-                <a href="#"><i class='bx bxs-spray-can icon' ></i> Medicina<i class='bx bx-chevron-right icon-right' ></i></a>
-                <ul class="side-dropdown">
-                    <li><a href="../medicinas/venta.php">Vender</a></li>
-                    <li><a href="../medicinas/mostrar.php">Listado</a></li>
-                    <li><a href="../medicinas/nuevo.php">Nueva</a></li>
-                    <li><a href="../medicinas/categoria.php">Categoria</a></li>
-
-                </ul>
-            </li>
-
-            <li>
-                <a href="#"><i class='bx bxs-cog icon' ></i> Ajustes<i class='bx bx-chevron-right icon-right' ></i></a>
-                <ul class="side-dropdown">
-                    <li><a href="../ajustes/mostrar.php">Ajustes</a></li>
-                    <li><a href="../ajustes/idioma.php">Idioma</a></li>
-                    <li><a href="../ajustes/base.php">Base de datos</a></li>
-                    
-                </ul>
-            </li>
-
-          <li><a href="../acerca/mostrar.php"><i class='bx bxs-info-circle icon' ></i> Acerca de</a></li>
-          
-           
-        </ul>
-       
-
-    </section>
+    <?php include_once("../includes/slidebar.php") ?>
     <!-- SIDEBAR -->
 
     <!-- NAVBAR -->
-    <section id="content">
-        <!-- NAVBAR -->
-        <nav>
-            <i class='bx bx-menu toggle-sidebar' ></i>
-            <form action="#">
-                <div class="form-group">
-                    <input type="text" placeholder="Search...">
-                    <i class='bx bx-search icon' ></i>
+    <?php include_once("../includes/navbar.php") ?>
+    <!-- NAVBAR -->
+
+
+
+    <!-- MAIN -->
+    <main>
+
+        <button onclick="location.href='nuevo.php'" class="btn btn-secondary"><i class="bi bi-person-add"></i>
+            &nbsp;Agregar paciente</button>
+
+        <div class="data">
+            <div class="content-data">
+                <div class="head">
+                    <h3 style="color: #1E2C4B;"><i class="bi bi-people"></i> | Listado de pacientes</h3>
                 </div>
-            </form>
-            
-           
-            <span class="divider"></span>
-            <div class="profile">
-                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
-                <ul class="profile-link">
-                   <li><a href="../profile/mostrar.php"><i class='bx bxs-user-circle icon' ></i> Profile</a></li>
-                    
-                    <li>
-                     <a href="../salir.php"><i class='bx bxs-log-out-circle' ></i> Logout</a>
-                    </li>
-                   
-                </ul>
+
+
+                <div class="table-responsive" style="overflow-x:auto;">
+                    <?php
+                    require '../../backend/bd/Conexion.php';
+                    $sentencia = $connect->prepare("SELECT * FROM patients ORDER BY idpa DESC;");
+                    $sentencia->execute();
+                    $data = array();
+                    if ($sentencia) {
+                        while ($r = $sentencia->fetchObject()) {
+                            $data[] = $r;
+                        }
+                    }
+                    ?>
+                    <?php if (count($data) > 0): ?>
+                        <table id="example" class="responsive-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        <center>DNI</center>
+                                    </th>
+                                    <th scope="col">
+                                        <center>Paciente</center>
+                                    </th>
+                                    <th scope="col">
+                                        <center>Sexo</center>
+                                    </th>
+                                    <th scope="col">
+                                        <center>Teléfono</center>
+                                    </th>
+                                    <th scope="col">
+                                        <center>Estado</center>
+                                    </th>
+                                    <th scope="col">
+                                        <center>Acciones</center>
+                                    </th>
+                                </tr>
+                                <center>
+                            </thead>
+
+
+                            <tbody style="border: 0.5px  solid #6BAEC8;">
+                                <?php foreach ($data as $d): ?>
+                                    <tr style="border: 2px solid #E3E3E3;">
+                                        <th scope="row" style="border: 0.5px  solid #6BAEC8;">
+                                            <center>
+                                                <?php echo $d->numhs ?>
+                                            </center>
+                                        </th>
+                                        <td data-title="Paciente" style="border: 0.5px solid #6BAEC8;">
+                                            <?php echo $d->nompa ?>&nbsp;
+                                            <?php echo $d->apepa ?>
+                                        </td>
+
+                                        <td data-title="Sexo" style="border: 0.5px  solid #6BAEC8;">
+                                            <?php echo $d->sex ?>
+                                        </td>
+
+                                        <td data-title="Teléfono" style="border: 0.5px  solid #6BAEC8;"><a
+                                                style="color: #1E2C4B;" href="tel:<?php echo $d->phon ?>"><i
+                                                    class="bi bi-whatsapp"></i>&nbsp;
+                                                <?php echo $d->phon ?>
+                                            </a></td>
+
+
+                                        <td data-title="Estado" style="border: 1px solid #6BAEC8;">
+
+                                            <label class="switch">
+                                                <input type="checkbox" id="<?= $d->idpa ?>" value="<?= $d->state ?>"
+                                                    <?= $d->state == '1' ? 'checked' : ''; ?> />
+
+                                                <span class="slider"></span>
+                                            </label>
+                                        </td>
+                                        <td style="border: 1px solid #6BAEC8;">
+
+                                            <div class="dropdown">
+                                                <button class="btn btn-dark dropdown-toggle btn-sm" type="button"
+                                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                    Acciones
+                                                </button>
+
+
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                                                    style="font-size: 15px; font-size: 15px; box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);">
+                                                    <a class="dropdown-item"
+                                                        href="../pacientes/editar.php?id=<?php echo $d->idpa ?>"><i
+                                                            class="bi bi-pencil-square"></i>&nbsp; Actualizar</a>
+                                                    <a class="dropdown-item"
+                                                        href="../pacientes/info.php?id=<?php echo $d->idpa ?>"><i
+                                                            class="bi bi-exclamation-circle"></i>&nbsp; Detalles</a>
+                                                    <a class="dropdown-item"
+                                                        href="../pacientes/historia.php?id=<?php echo $d->idpa ?>"><i
+                                                            class="bi bi-file-check"></i>&nbsp; Historial medico</a>
+                                                    <a class="dropdown-item"
+                                                        href="../pacientes/pago.php?id=<?php echo $d->idpa ?>"><i
+                                                            class="bi bi-pencil-square"></i>&nbsp; Pagos</a>
+                                                    <?php
+                                                    if ($d->rol == '2') {
+                                                        // code...
+                                                        echo '<a class="dropdown-item" title="Cambiar contraseña"  href="../pacientes/password.php?id=' . $d->idpa . '"><i class="bi bi-eye-slash"></i>&nbsp; Contaseña</a>';
+                                                    } else {
+                                                        echo '<a class="dropdown-item" title="Crear perfil" href="../pacientes/crear.php?id=' . $d->idpa . '" ><i class="bi bi-person-add"></i>&nbsp; Usuario</a>';
+                                                    }
+
+                                                    ?>
+
+
+                                                    <!-- <form onsubmit="return confirm('¿Realmente desea eliminar el registro?');"
+                                                        method='POST' action='<?php $_SERVER['PHP_SELF'] ?>'>
+                                                        <input type='hidden' name='idpa' value="<?php echo $d->idpa; ?>">
+
+                                                        <button name='delete_patients' style="cursor: pointer;"
+                                                            class="fa fa-trash"></button>
+                                                    </form>  -->
+
+                                                </div>
+                                            </div>
+
+                                            <!--  
+                                       
+                                          
+                                            <a title="Pagos" 
+                                                class="fa fa-money"></a>
+
+                                            
+
+                                            
+ -->
+
+
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    <?php else: ?>
+
+                        <div class="alert">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            <strong>¡Alerta!</strong> No hay datos.
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
-        </nav>
-        <!-- NAVBAR -->
+        </div>
 
-        <!-- MAIN -->
-        <main>
-            <h1 class="title">Bienvenido <?php echo '<strong>'.$_SESSION['username'].'</strong>'; ?></h1>
-            <ul class="breadcrumbs">
-                <li><a href="../admin/escritorio.php">Home</a></li>
-                <li class="divider">></li>
-                <li><a href="#" class="active">Listado de los pacientes</a></li>
-            </ul>
-            <button class="button" onclick="location.href='nuevo.php'">Nuevo</button>
-          <div class="data">
-                <div class="content-data">
-                    <div class="head">
-                        <h3>Pacientes</h3>
-                       
-                    </div>
-                   <div class="table-responsive" style="overflow-x:auto;">
-                       <?php 
-require '../../backend/bd/Conexion.php';
-$sentencia = $connect->prepare("SELECT * FROM patients ORDER BY idpa DESC;");
- $sentencia->execute();
-$data =  array();
-if($sentencia){
-  while($r = $sentencia->fetchObject()){
-    $data[] = $r;
-  }
-}
-     ?>
-     <?php if(count($data)>0):?>
-         <table id="example" class="responsive-table">
-            <thead>
-                <tr>
-                    <th scope="col">DNI</th>
-                    <th scope="col">Paciente</th>
-                    
-                    <th scope="col">Sexo</th>
-                    <th scope="col">Grupo</th>
-                    <th scope="col">Teléfono</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach($data as $d):?>
-                    <tr>
-                        <th scope="row"><?php echo $d->numhs ?></th>
-                        <td data-title="Paciente"><?php echo $d->nompa ?>&nbsp;<?php echo $d->apepa ?></td>
-                        
-                        <td data-title="Sexo"><?php echo $d->sex ?></td>
-                        <td data-title="Grupo"><?php echo $d->grup ?></td>
-                        <td data-title="Teléfono"><a href="tel:<?php echo $d->phon ?>"><?php echo $d->phon ?></a></td>
-                        
-                        
-                        <td data-title="Estado">
-    
-                        <label class="switch">
-                          <input type="checkbox" id="<?=$d->idpa?>" value="<?=$d->state ?>" <?=$d->state == '1' ? 'checked' : '' ;?>/> 
-
-                          <span class="slider"></span>
-                        </label>
-                        </td>
-                        <td>
-                            <a title="Actualizar" href="../pacientes/editar.php?id=<?php echo $d->idpa ?>" class="fa fa-pencil tooltip"></a>
-                            <a title="Información" href="../pacientes/info.php?id=<?php echo $d->idpa ?>" class="fa fa-info"></a>
-                            <a title="Historial médico" href="../pacientes/historia.php?id=<?php echo $d->idpa ?>" class="fa fa-stethoscope"></a>
-                            <a title="Pagos" href="../pacientes/pago.php?id=<?php echo $d->idpa ?>" class="fa fa-money"></a>
-                            
-                            <form  onsubmit="return confirm('Realmente desea eliminar el registro?');" method='POST' action='<?php $_SERVER['PHP_SELF'] ?>'>
-<input type='hidden' name='idpa' value="<?php echo  $d->idpa; ?>">
-
-<button name='delete_patients' style="cursor: pointer;" class="fa fa-trash"></button>
-</form>
-
-                            <?php 
-                                if ($d->rol == '2') {
-                                    // code...
-                echo '<a title="Cambiar contraseña"  href="../pacientes/password.php?id='.$d->idpa.'" class="fa fa-key"></a>';
-                                }else {
-                                    echo '<a title="Crear perfil" href="../pacientes/crear.php?id='.$d->idpa.'" class="fa fa-user-plus"></a>';
-                                }
-
-                             ?>
-        
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-            </tbody>
-         </table> 
-         <?php else:?>
-  
-    <div class="alert">
-      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-      <strong>Danger!</strong> No hay datos.
-    </div>
-    <?php endif; ?>
-                    </div>
-                </div>
-            </div>  
-
-        </main>
-        <!-- MAIN -->
+    </main>
+    <!-- MAIN -->
     </section>
+
+
+
+
     <?php include_once '../../backend/php/delete_patients.php' ?>
     <!-- NAVBAR -->
     <script src="../../backend/js/jquery.min.js"></script>
-    
+
     <script src="../../backend/js/script.js"></script>
-    
+
     <!-- Data Tables -->
     <script type="text/javascript" src="../../backend/js/datatable.js"></script>
     <script type="text/javascript" src="../../backend/js/datatablebuttons.js"></script>
@@ -260,54 +213,61 @@ if($sentencia){
     <script type="text/javascript" src="../../backend/js/buttonshtml5.js"></script>
     <script type="text/javascript" src="../../backend/js/buttonsprint.js"></script>
     <script type="text/javascript">
-$(document).ready(function() {
-    $('#example').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
+        $(document).ready(function () {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'Copiar', 'csv', 'excel', 'pdf', 'Imprimir'
+                ]
+            });
+        });
     </script>
 
- <script type="text/javascript">
-    let popUp = document.getElementById("cookiePopup");
-//When user clicks the accept button
-document.getElementById("acceptCookie").addEventListener("click", () => {
-  //Create date object
-  let d = new Date();
-  //Increment the current time by 1 minute (cookie will expire after 1 minute)
-  d.setMinutes(2 + d.getMinutes());
-  //Create Cookie withname = myCookieName, value = thisIsMyCookie and expiry time=1 minute
-  document.cookie = "myCookieName=thisIsMyCookie; expires = " + d + ";";
-  //Hide the popup
-  popUp.classList.add("hide");
-  popUp.classList.remove("shows");
-});
-//Check if cookie is already present
-const checkCookie = () => {
-  //Read the cookie and split on "="
-  let input = document.cookie.split("=");
-  //Check for our cookie
-  if (input[0] == "myCookieName") {
-    //Hide the popup
-    popUp.classList.add("hide");
-    popUp.classList.remove("shows");
-  } else {
-    //Show the popup
-    popUp.classList.add("shows");
-    popUp.classList.remove("hide");
-  }
-};
-//Check if cookie exists when page loads
-window.onload = () => {
-  setTimeout(() => {
-    checkCookie();
-  }, 2000);
-};
+    <script type="text/javascript">
+        let popUp = document.getElementById("cookiePopup");
+        //When user clicks the accept button
+        document.getElementById("acceptCookie").addEventListener("click", () => {
+            //Create date object
+            let d = new Date();
+            //Increment the current time by 1 minute (cookie will expire after 1 minute)
+            d.setMinutes(2 + d.getMinutes());
+            //Create Cookie withname = myCookieName, value = thisIsMyCookie and expiry time=1 minute
+            document.cookie = "myCookieName=thisIsMyCookie; expires = " + d + ";";
+            //Hide the popup
+            popUp.classList.add("hide");
+            popUp.classList.remove("shows");
+        });
+        //Check if cookie is already present
+        const checkCookie = () => {
+            //Read the cookie and split on "="
+            let input = document.cookie.split("=");
+            //Check for our cookie
+            if (input[0] == "myCookieName") {
+                //Hide the popup
+                popUp.classList.add("hide");
+                popUp.classList.remove("shows");
+            } else {
+                //Show the popup
+                popUp.classList.add("shows");
+                popUp.classList.remove("hide");
+            }
+        };
+        //Check if cookie exists when page loads
+        window.onload = () => {
+            setTimeout(() => {
+                checkCookie();
+            }, 2000);
+        };
     </script>
 
 </body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
 </html>
-
-

@@ -4,6 +4,7 @@
 	font-family: 'Open Sans', sans-serif;
 	margin: 0;
 	padding: 0;
+  text-decoration: none;
 	box-sizing: border-box;
 }
 
@@ -14,10 +15,11 @@
 	--dark: #000;
 	--green: #81D43A;
 	--light-green: #E3FFCB;
-	--blue: #1e2c4b;
+	--blue: #6BAEC8;
 	--light-blue: #D0E4FF;
 	--dark-blue: #0C5FCD;
 	--red: #FC3B56;
+  
 }
 
 html {
@@ -612,8 +614,8 @@ main .btn-send:hover {
   overflow: hidden;
 }
 .responsive-table thead th {
-  background-color: #1e2c4b;
-  border: 1px solid #1e2c4b;
+  background-color: #6BAEC8;
+  border: 1px solid #6BAEC8;
   font-weight: normal;
   text-align: center;
   color: white;
@@ -647,13 +649,13 @@ main .btn-send:hover {
 }
 .responsive-table tbody tr {
   margin-bottom: 1em;
-  border: 2px solid #1e2c4b;
+  border: 2px solid #6BAEC8;
 }
 .responsive-table tbody tr:last-of-type {
   margin-bottom: 0;
 }
 .responsive-table tbody th[scope="row"] {
-  background-color: #1e2c4b;
+  background-color: #6BAEC8;
   color: white;
 }
 .responsive-table tbody td[data-type=currency] {
@@ -666,8 +668,9 @@ main .btn-send:hover {
   color: rgba(94, 93, 82, 0.75);
 }
 .responsive-table tbody td {
-  text-align: right;
-  border-bottom: 1px solid #1e2c4b;
+  text-align: center;
+
+  border-bottom: 1px solid #6BAEC8;
 }
 
 
@@ -1276,6 +1279,7 @@ input[type=text]:focus, input[type=password]:focus {
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
+  border-radius: 15px;
 }
 
 .slider:before {
@@ -1288,6 +1292,7 @@ input[type=text]:focus, input[type=password]:focus {
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
+  border-radius: 15px;
 }
 
 input:checked + .slider {
